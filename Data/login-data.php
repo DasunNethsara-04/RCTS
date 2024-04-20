@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['role'] = $row['role'];
-                header("location: ../Pages/SuperUser/Dashboard.php");
+                header("location: ../Pages/SuperUser/SuperUser.php");
             } else {
                 // invalid password
                 $em = "Invalid Password";
