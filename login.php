@@ -23,6 +23,9 @@
     <!-- Favicons -->
     <link href="https://i.ibb.co/JF8nBS1/Logo-Tech-2.png" rel="icon" />
 
+    <!-- Sweetalert CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,20 +76,29 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-4">
+                <?php if (isset($_GET['error'])) { ?>
+                    <script>
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: "<?= $_GET['error'] ?>"
+                        })
+                    </script>
+                <?php } ?>
                 <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s"></div>
                 <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                    <form>
+                    <form method="post" action="./Data/login-data.php">
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email"
-                                        required>
+                                    <input type="email" name="email" class="form-control" id="email"
+                                        placeholder="Your Email" required>
                                     <label for="name">Email</label>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                    <input type="password" class="form-control" id="password"
+                                    <input type="password" name="password" class="form-control" id="password"
                                         placeholder="Your Password" required>
                                     <label for="password">Password</label>
                                 </div>
