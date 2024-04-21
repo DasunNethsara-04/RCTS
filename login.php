@@ -1,3 +1,20 @@
+<?php
+
+include ("./Connection/db.php");
+// checking if the Super User in the database or not
+$sql = "SELECT * FROM user_tbl ut INNER JOIN user_role_tbl urt ON (ut.user_role_id = urt.user_role_id) WHERE ut.user_role_id = 1 AND ut.status=1";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows < 1) {
+    // super user not found
+    // load the error 500 page
+    header("Location: ./Error/401.php");
+}
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
