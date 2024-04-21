@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM user_tbl WHERE email=?";
+    $sql = "SELECT * FROM user_tbl ut INNER JOIN user_role_tbl urt ON (ut.user_role_id = urt.user_role_id) WHERE ut.email=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -18,18 +18,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 session_start();
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['name'] = $row['name'];
-                $_SESSION['id'] = $row['id'];
-                $_SESSION['role'] = $row['role'];
+                $_SESSION['user_role'] = $row['user_role'];
                 header("location: ../Pages/SuperUser/SuperUser.php");
             } else {
                 // invalid password
                 $em = "Invalid Password";
                 header("Location: ../login.php?error=$em");
+                exit();
             }
         }
     } else {
         // no user found
         $em = "Invalid Password";
         header("Location: ../login.php?error=$em");
+        exit();
     }
 }

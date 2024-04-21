@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!($_SESSION['email']) || $_SESSION['user_role'] != "Super User") {
+  header("Location: ../../login.php");
+}
+
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -43,16 +52,16 @@
           aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <li>
-            <a class="dropdown-item" href="{{ url_for('profile', user_id=session['USER_ID'] ) }}">Profile</a>
+            <a class="dropdown-item" href="">Profile</a>
           </li>
           <li>
-            <a class="dropdown-item" href="{{ url_for('edit_user', user_id=session['USER_ID'] ) }}">Settings</a>
+            <a class="dropdown-item" href="">Settings</a>
           </li>
           <li>
             <hr class="dropdown-divider" />
           </li>
           <li>
-            <a class="dropdown-item" href="{{ url_for('logout' ) }}">Logout</a>
+            <a class="dropdown-item" href="../logout.php">Logout</a>
           </li>
         </ul>
       </li>
@@ -87,102 +96,54 @@
                 <a class="nav-link" href="./SuperUser.php?page=page3">Show Users</a>
               </nav>
             </div>
-            <!-- <a
-                class="nav-link collapsed"
-                href="#"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapsePages"
-                aria-expanded="false"
-                aria-controls="collapsePages"
-              >
-                <div class="sb-nav-link-icon">
-                  <i class="fas fa-book-open"></i>
-                </div>
-                Pages
-                <div class="sb-sidenav-collapse-arrow">
-                  <i class="fas fa-angle-down"></i>
-                </div>
-              </a>
-              <div
-                class="collapse"
-                id="collapsePages"
-                aria-labelledby="headingTwo"
-                data-bs-parent="#sidenavAccordion"
-              >
-                <nav
-                  class="sb-sidenav-menu-nested nav accordion"
-                  id="sidenavAccordionPages"
-                >
-                  <a
-                    class="nav-link collapsed"
-                    href="#"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#pagesCollapseAuth"
-                    aria-expanded="false"
-                    aria-controls="pagesCollapseAuth"
-                  >
-                    Authentication
-                    <div class="sb-sidenav-collapse-arrow">
-                      <i class="fas fa-angle-down"></i>
-                    </div>
-                  </a>
-                  <div
-                    class="collapse"
-                    id="pagesCollapseAuth"
-                    aria-labelledby="headingOne"
-                    data-bs-parent="#sidenavAccordionPages"
-                  >
-                    <nav class="sb-sidenav-menu-nested nav">
-                      <a class="nav-link" href="login.html">Login</a>
-                      <a class="nav-link" href="register.html">Register</a>
-                      <a class="nav-link" href="password.html"
-                        >Forgot Password</a
-                      >
-                    </nav>
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+              aria-expanded="false" aria-controls="collapsePages">
+              <div class="sb-nav-link-icon">
+                <i class="fas fa-book-open"></i>
+              </div>
+              Pages
+              <div class="sb-sidenav-collapse-arrow">
+                <i class="fas fa-angle-down"></i>
+              </div>
+            </a>
+            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth"
+                  aria-expanded="false" aria-controls="pagesCollapseAuth">
+                  Authentication
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
                   </div>
-                  <a
-                    class="nav-link collapsed"
-                    href="#"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#pagesCollapseError"
-                    aria-expanded="false"
-                    aria-controls="pagesCollapseError"
-                  >
-                    Error
-                    <div class="sb-sidenav-collapse-arrow">
-                      <i class="fas fa-angle-down"></i>
-                    </div>
-                  </a>
-                  <div
-                    class="collapse"
-                    id="pagesCollapseError"
-                    aria-labelledby="headingOne"
-                    data-bs-parent="#sidenavAccordionPages"
-                  >
-                    <nav class="sb-sidenav-menu-nested nav">
-                      <a class="nav-link" href="401.html">401 Page</a>
-                      <a class="nav-link" href="404.html">404 Page</a>
-                      <a class="nav-link" href="500.html">500 Page</a>
-                    </nav>
-                  </div>
-                </nav>
-              </div> -->
-            <!-- <div class="sb-sidenav-menu-heading">Addons</div>
-              <a class="nav-link" href="charts.html">
-                <div class="sb-nav-link-icon">
-                  <i class="fas fa-chart-area"></i>
+                </a>
+                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordionPages">
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link" href="register.html">Register</a>
+                    <a class="nav-link" href="password.html">Forgot Password</a>
+                  </nav>
                 </div>
-                Charts
-              </a>
-              <a class="nav-link" href="tables.html">
-                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                Tables
-              </a> -->
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError"
+                  aria-expanded="false" aria-controls="pagesCollapseError">
+                  Error
+                  <div class="sb-sidenav-collapse-arrow">
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                </a>
+                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordionPages">
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="401.html">401 Page</a>
+                    <a class="nav-link" href="404.html">404 Page</a>
+                    <a class="nav-link" href="500.html">500 Page</a>
+                  </nav>
+                </div>
+              </nav>
+            </div>
           </div>
         </div>
         <div class="sb-sidenav-footer">
-          <div class="small">Logged in:</div>
-          {{ session['EMAIL'] }}
+          <div class="small">Logged in:</div><?= $_SESSION['user_role'] ?>
         </div>
       </nav>
     </div>
@@ -190,12 +151,8 @@
       <main class="page-content">
         <!-- page content goes here -->
         <?php
-        // Check if the page parameter is set in the URL
         if (isset($_GET['page'])) {
-          // Retrieve the requested page value
           $page = $_GET['page'];
-
-          // Include the corresponding PHP file based on the requested page
           switch ($page) {
             case 'page1':
               include ("Dashboard.php");
@@ -207,12 +164,10 @@
               include ("show-users.php");
               break;
             default:
-              // Default to dashboard.php if an invalid page is requested
               include ("Dashboard.php");
               break;
           }
         } else {
-          // Default to dashboard.php if the page parameter is not set
           include ("Dashboard.php");
         }
         ?>

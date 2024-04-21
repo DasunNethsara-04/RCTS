@@ -24,7 +24,7 @@
     <link href="https://i.ibb.co/JF8nBS1/Logo-Tech-2.png" rel="icon" />
 
     <!-- Sweetalert CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
