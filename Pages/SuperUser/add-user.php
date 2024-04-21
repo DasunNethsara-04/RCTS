@@ -1,7 +1,25 @@
 <div class="container mt-5">
     <h2>Add User</h2>
+    <?php if (isset($_GET['success'])) { ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Done',
+                text: "<?= $_GET['success'] ?>"
+            })
+        </script>
+    <?php } ?>
+    <?php if (isset($_GET['error'])) { ?>
+        <script>
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: "<?= $_GET['error'] ?>"
+            })
+        </script>
+    <?php } ?>
     <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-        <form method="post">
+        <form method="post" action="../../Data/add-user-data.php">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required />
@@ -30,6 +48,7 @@
                     while ($row = $result->fetch_assoc()) {
                         echo "<option value=" . $row['user_role_id'] . ">" . $row['user_role'] . "</option>";
                     }
+                    $conn->close();
                     ?>
                 </select>
             </div>

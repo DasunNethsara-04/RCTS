@@ -24,6 +24,8 @@ if (!($_SESSION['email']) || $_SESSION['user_role'] != "Super User") {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Sweetalert CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -106,7 +108,7 @@ if (!($_SESSION['email']) || $_SESSION['user_role'] != "Super User") {
           </div>
         </div>
         <div class="sb-sidenav-footer">
-          <div class="small">Logged in:</div><?= $_SESSION['user_role'] ?>
+          <div class="small">Logged in as:</div><?= $_SESSION['user_role'] ?>
         </div>
       </nav>
     </div>
