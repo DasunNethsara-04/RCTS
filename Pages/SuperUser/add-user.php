@@ -19,3 +19,8 @@
         </form>
     </div>
 </div>
+
+<!-- set page title -->
+<script>
+    $(document).prop('title', 'Add User - RCTS');
+</script>

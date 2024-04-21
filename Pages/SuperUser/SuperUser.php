@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>Dashboard - RCTS</title>
+  <title>Super User Panel - RCTS</title>
   <link href="../../assets/css/bakcend-css.css" rel="stylesheet" />
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <!-- Favicons -->
@@ -198,7 +198,7 @@
           // Include the corresponding PHP file based on the requested page
           switch ($page) {
             case 'page1':
-              include ("Page1.php");
+              include ("Dashboard.php");
               break;
             case 'page2':
               include ("add-user.php");
@@ -208,12 +208,12 @@
               break;
             default:
               // Default to dashboard.php if an invalid page is requested
-              include ("Page1.php");
+              include ("Dashboard.php");
               break;
           }
         } else {
           // Default to dashboard.php if the page parameter is not set
-          include ("Page1.php");
+          include ("Dashboard.php");
         }
         ?>
 
